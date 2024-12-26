@@ -21,14 +21,14 @@ function UserBooks() {
 
 
   return (
-    <main style={{ marginTop: "100px" }}>
+    <main style={{ marginTop: "100px", marginBottom: "150px" }}>
       <div className="cards" style={{ width: "90%", margin: "0 auto" }}>
         <Container fluid="md">
           <Row>
             {
               bookData.map(({ id, title, description, price, author, pagesCount, publishedYear, genre, language, image }) => (
                 <Col key={id} >
-                  <Card style={{ width: '18rem' }}>
+                  <Card style={{ width: '18rem', margin: "30px",padding:"30px" }}>
                     <Card.Img style={{ width: "100%", height: "200px", objectFit: "cover" }} variant="top" src={image} />
                     <Card.Body>
                       <Card.Title>{title}</Card.Title>
