@@ -9,7 +9,7 @@ function UserNavbar() {
   return (
     <Navbar className='position-fixed w-100  ' style={{ backgroundColor: "#441508", color: 'white',zIndex:"10",top:"0" }}>
       <Container className='d-flex gap-5'>
-        <Navbar.Brand style={{ color: "white", fontSize: "30px" }}>BOOKS</Navbar.Brand>
+        <Navbar.Brand style={{ color: "white", fontSize: "30px" }}>BOOKSTORE</Navbar.Brand>
         <Nav className="me-auto d-flex gap-3">
           <NavLink 
             to="/" 
