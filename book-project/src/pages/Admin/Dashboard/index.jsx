@@ -4,7 +4,7 @@ function Dashboard() {
 
 
   return (
-    <div></div>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh',fontWeight:"900",fontSize:"40px" }}>Welcome Admin Page!</div>
   )
 }
 

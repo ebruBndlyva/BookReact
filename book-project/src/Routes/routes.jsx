@@ -60,7 +60,7 @@ const ROUTE = [
                 element: <AddBook />
             },
             {
-                path: "editbook",
+                path: "editbook/:id",
                 element: <EditBook />
             }
         ]

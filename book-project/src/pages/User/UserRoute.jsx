@@ -7,7 +7,7 @@ function UserRoute() {
     <> 
     <UserNavbar/>
     <Outlet/>
-    <UserFooter/>
+    {/* <UserFooter/> */}
     </>
   )
 }
