@@ -1,0 +1,18 @@
+.search {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid brown;
+  margin: 20px;
+  border-radius: 20px;
+  &:focus {
+    outline: none;
+  }
+}
+.sortBtn{
+    border: none;
+ padding: 10px 50px;
+ border-radius: 20px;
+ color: white;
+ font-size: 18px;
+ background-color: brown;
+}

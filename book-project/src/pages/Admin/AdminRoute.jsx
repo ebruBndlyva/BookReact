@@ -6,7 +6,7 @@ function AdminRoute() {
   return (
     <> 
     <AdminNavbar/>
-    <Outlet/>
+    <Outlet />
     {/* <AdminFooter/> */}
     </>
   )

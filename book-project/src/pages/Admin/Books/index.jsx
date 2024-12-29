@@ -39,13 +39,13 @@ function Books() {
             bookData.map(({ id, title, description, price, author, pagesCount, publishedYear, genre, language, image }) => (
               <tr key={id}>
                 <td><img style={{ width: '100px', height: "100px" }} src={image} alt="book" /></td>
-                <td>{title}</td>
-                <td>{description}</td>
+                <td>{title.slice(0,10)}...</td>
+                <td>{description.slice(0,10)}...</td>
                 <td>{price}</td>
-                <td>{author}</td>
+                <td>{author.slice(0,10)}...</td>
                 <td>{pagesCount}</td>
                 <td>{publishedYear}</td>
-                <td>{genre}</td>
+                <td>{genre.slice(0,10)}...</td>
                 <td>{language}</td>
                 <td ><Link to={`/admin/editbook/${id}`} className='btn btn-warning' ><EditOutlined /></Link></td>
                 <td><Link to={`/admin/adminbooks/${id}`}><InfoCircleOutlined className='btn btn-primary' /></Link></td>

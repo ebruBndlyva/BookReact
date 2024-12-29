@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { BookContext } from '../../../context/BookContext';
 function AddBook() {
-
+  let { bookData, setBookData } = useContext(BookContext)
+  let navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -57,11 +60,13 @@ function AddBook() {
 
     }),
     onSubmit: values => {
-   
+
       axios.post("http://localhost:4000/books", values)
         .then(() => {
-          alert("add olundu")
+          setBookData([...bookData, values])
+
         })
+      navigate("/admin/adminbooks");
     },
   });
 
@@ -90,7 +95,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.description}
         />
-          {formik.touched.description && formik.errors.description && (
+        {formik.touched.description && formik.errors.description && (
           <div className='error'>{formik.errors.description}</div>
 
         )}
@@ -102,7 +107,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.price}
         />
-          {formik.touched.price && formik.errors.price && (
+        {formik.touched.price && formik.errors.price && (
           <div className='error'>{formik.errors.price}</div>
 
         )}
@@ -114,7 +119,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.author}
         />
-          {formik.touched.author && formik.errors.author && (
+        {formik.touched.author && formik.errors.author && (
           <div className='error'>{formik.errors.author}</div>
 
         )}
@@ -126,7 +131,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.pagesCount}
         />
-          {formik.touched.pagesCount && formik.errors.pagesCount && (
+        {formik.touched.pagesCount && formik.errors.pagesCount && (
           <div className='error'>{formik.errors.pagesCount}</div>
 
         )}
@@ -138,7 +143,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.publishedYear}
         />
-          {formik.touched.publishedYear && formik.errors.publishedYear && (
+        {formik.touched.publishedYear && formik.errors.publishedYear && (
           <div className='error'>{formik.errors.publishedYear}</div>
 
         )}
@@ -150,7 +155,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.genre}
         />
-          {formik.touched.genre && formik.errors.genre && (
+        {formik.touched.genre && formik.errors.genre && (
           <div className='error'>{formik.errors.genre}</div>
 
         )}
@@ -162,7 +167,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.language}
         />
-          {formik.touched.language && formik.errors.language && (
+        {formik.touched.language && formik.errors.language && (
           <div className='error'>{formik.errors.language}</div>
 
         )}
@@ -174,7 +179,7 @@ function AddBook() {
           onChange={formik.handleChange}
           value={formik.values.image}
         />
-          {formik.touched.image && formik.errors.image && (
+        {formik.touched.image && formik.errors.image && (
           <div className='error'>{formik.errors.image}</div>
 
         )}

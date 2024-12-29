@@ -4,13 +4,14 @@ import axios from "axios"
 
 export const BookContext = createContext()
 
-function BookProvider({children}) {
+function BookProvider({ children }) {
     let [bookData, setBookData] = useState([])
-    function getData() {
-        axios.get("http://localhost:4000/books")
-            .then(res => {
-                setBookData(res.data)
-            })
+    let [originalBook, setOriginalBook] = useState([]);
+    async function getData() {
+        let result = await axios.get("http://localhost:4000/books")
+
+        setBookData(result.data)
+        setOriginalBook(result.data)
 
     }
     useEffect(() => {
@@ -18,11 +19,13 @@ function BookProvider({children}) {
     }, [])
     const values = {
         bookData,
-        setBookData
+        setBookData,
+        originalBook,
+        setOriginalBook
     }
     return (
         <BookContext.Provider value={values}>
-{children}
+            {children}
         </BookContext.Provider>
     )
 }

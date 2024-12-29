@@ -18,7 +18,10 @@ function Favorites() {
     <main style={{ marginTop: "100px", marginBottom: "150px", marginBottom: "100px" }}>
       <div className="cards" style={{ width: "90%", margin: "0 auto" }}>
         <Container fluid="md">
-          <Row>
+        {
+          favorites.length==0 ? (<h2>Sizin favoritesiniz bosdur</h2>):
+          (
+            <Row>
             {
               favorites.map((book) => (
                 <Col key={book.id} >
@@ -52,6 +55,8 @@ function Favorites() {
             }
 
           </Row>
+          )
+        }
         </Container>
 
 

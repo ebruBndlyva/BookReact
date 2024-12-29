@@ -35,38 +35,44 @@ useEffect(()=>{
   return (
 
     <div style={{ marginTop: "100px" }}>
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>TotalPrice</th>
-            <th>Decrase</th>
-            <th>Count</th>
-            <th>Incrase</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            basket.map((BasketData => (
-              <tr key={BasketData.id}>
-                <td><img style={{ width: "100px", height: "100px" }} src={BasketData.image} alt="img" /></td>
-                <td>{BasketData.title}</td>
-                <td>{BasketData.price}</td>
-                <td>{(BasketData.price * BasketData.count).toFixed(2)}</td>
-                <td ><button onClick={() => DecraseBook(BasketData)}><MinusSquareFilled /></button></td>
-                <td>{BasketData.count}</td>
-                <td><button onClick={() => IncraseBook(BasketData)} ><PlusSquareFilled /></button></td>
-                <td><button className='btn btn-danger' onClick={() => DeleteBasketData(BasketData)} >X</button></td>
-              </tr>
-            )))
-          }
-
-        </tbody>
-      </Table>
-      <span>Total:{total} </span>
+ {
+  basket.length==0 ? (<h2>Sizin basketiniz bosdur</h2>):(
+    <div>
+    <Table striped bordered hover size="sm">
+         <thead>
+           <tr>
+             <th>Image</th>
+             <th>Title</th>
+             <th>Price</th>
+             <th>TotalPrice</th>
+             <th>Decrase</th>
+             <th>Count</th>
+             <th>Incrase</th>
+             <th>Delete</th>
+           </tr>
+         </thead>
+         <tbody>
+           {
+             basket.map((BasketData => (
+               <tr key={BasketData.id}>
+                 <td><img style={{ width: "100px", height: "100px" }} src={BasketData.image} alt="img" /></td>
+                 <td>{BasketData.title}</td>
+                 <td>{BasketData.price}</td>
+                 <td>{(BasketData.price * BasketData.count).toFixed(2)}</td>
+                 <td ><button onClick={() => DecraseBook(BasketData)}><MinusSquareFilled /></button></td>
+                 <td>{BasketData.count}</td>
+                 <td><button onClick={() => IncraseBook(BasketData)} ><PlusSquareFilled /></button></td>
+                 <td><button className='btn btn-danger' onClick={() => DeleteBasketData(BasketData)} >X</button></td>
+               </tr>
+             )))
+           }
+ 
+         </tbody>
+       </Table>
+       <span>Total:{total} </span>
+     </div>
+  )
+ }
     </div>
   )
 }

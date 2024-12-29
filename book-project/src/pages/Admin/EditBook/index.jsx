@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { BookContext } from '../../../context/BookContext';
 
 function EditBook() {
-
+  let { setBookData } = useContext(BookContext)
   let editId = useParams()
-  let [editBook, setEditBook] = useState({})
+  let [editBook, setEditBook] = useState([])
+  let navigate = useNavigate()
 
 
 
@@ -16,6 +18,7 @@ function EditBook() {
     axios.get(`http://localhost:4000/books/${editId.id}`)
       .then((res) => {
         setEditBook(res.data)
+        console.log(res.data)
       })
   }, [editId.id])
 
@@ -75,9 +78,14 @@ function EditBook() {
     onSubmit: values => {
 
       axios.put(`http://localhost:4000/books/${editId.id}`, values)
-        .then(() => {
-          alert("Edit olundu")
-        })
+      .then((res) => {
+        setBookData(prevBooks => 
+          prevBooks.map(book => 
+            book.id === editId.id ? res.data : book
+          )
+        );
+        navigate("/admin/adminbooks");
+      });
     },
   });
 
